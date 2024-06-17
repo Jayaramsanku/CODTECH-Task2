@@ -1,0 +1,60 @@
+// include the library code:
+#include <LiquidCrystal.h>
+#include <string.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+
+// Defining Variables
+const int analogIn = A0;
+int humiditysensorOutput = 0;
+int RawValue= 0;
+double Voltage = 0;
+double tempC = 0;
+double tempF = 0;
+int buttonState = 0;
+char LCD_LANGUAGE = 'E';
+
+void setup() 
+{
+	Serial.begin(9600);
+  	pinMode(A1, INPUT);
+  	pinMode(7, INPUT);
+  	lcd.begin(16, 2);
+}
+
+void loop() 
+{
+  RawValue = analogRead(analogIn);
+  Voltage = (RawValue / 1023.0) * 5000; // 5000 to get millivots.
+  tempC = (Voltage-500) * 0.1; // 500 is the offset
+  tempF = (tempC * 1.8) + 32; // convert to F
+  double humidity = map(humiditysensorOutput, 0, 1023, 10, 70);
+  buttonState = digitalRead(7);
+  
+  if (buttonState == HIGH) {
+    LCD_LANGUAGE = 'T';
+  } else {
+  	LCD_LANGUAGE = 'E';
+  }
+
+  if (LCD_LANGUAGE == 'T') {
+    lcd.setCursor(0,0);
+    lcd.print("SIC(C):" + String(tempC,2) + " TR");
+    humiditysensorOutput = analogRead(A1);
+    lcd.setCursor(0,1);
+    lcd.print("NEM(%): " + String(humidity,2));  
+  }
+  else {
+    lcd.setCursor(0,0);
+    lcd.print("TEM(F):" + String(tempF,2) + " EN");
+    humiditysensorOutput = analogRead(A1);
+    lcd.setCursor(0,1);
+    lcd.print("HUM(%): " + String(humidity,2));  
+  }
+  
+
+}
