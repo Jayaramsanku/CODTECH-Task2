@@ -14,7 +14,7 @@
 ## Overview of the Project
 
 ### Project: TEMPERATURE AND HUMIDITY MONITORING WITH DHT SENSOR
-![image](https://github.com/Jayaramsanku/CODTECH-Task2/assets/169425840/e6440039-0aec-4637-866e-f5d768e60b5a)
+![image](https://github.com/Jayaramsanku/CODTECH-Task2/assets/169425840/fd3175e7-70da-4234-8b19-86ca3302623f)
 
 
 ### Objective
