@@ -40,4 +40,4 @@ The Objective of this project is to perform the measuring of temprature and humm
 - Tools are connected as shown in the figure above
 - Code dumped in Aurdino UNO R3 so it measures the temperature and hummidity%
 - and shown in 16*2 LCD Display
-- simulation is shown in given link:
+- simulation is shown in given link: https://www.linkedin.com/posts/activity-7208418407346573312-jDvF?utm_source=share&utm_medium=member_desktop
